@@ -1,0 +1,57 @@
+@echo off
+title Installing Z-Utils v1.0
+cls
+powershell -Command "& {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Installing ZUitls to System32 folder?', 'Z-UTILS', 'YesNo', [System.Windows.Forms.MessageBoxIcon]::Warning);}" > %TEMP%\out.tmp
+set /p OUT=<%TEMP%\out.tmp
+if %OUT%==Yes GOTO install
+if %OUT%==No GOTO cancel
+
+:install
+cls
+echo Installing Z-UTILS...
+
+cd C:\Windows\System32
+
+REM C Command
+echo @echo off >> c.bat
+echo cls >> c.bat
+echo @echo on >> c.bat
+echo. ADDED: C Command
+
+REM CLEAR Command
+echo @echo off >> clear.bat
+echo cls >> clear.bat
+echo @echo on >> clear.bat
+echo. ADDED: CLEAR Command
+
+REM CT Command
+echo @echo off >> ct.bat
+echo cd %USERPROFILE%\Desktop >> ct.bat
+echo @echo on >> ct.bat
+echo. ADDED: CT Command
+
+REM ZUtils Command
+echo @echo off >> zutils.bat
+echo echo ==================================== >> zutils.bat
+echo echo Using the Z-Utils v1.0 >> zutils.bat
+echo echo. >> zutils.bat
+echo echo Commands: >> zutils.bat
+echo echo c/clear/cls = clear the terminal >> zutils.bat
+echo echo ct = change directory to desktop >> zutils.bat
+echo echo zutils = showing this message >> zutils.bat
+echo echo. >> zutils.bat
+echo echo Any Ideas? text me on Discord: >> zutils.bat
+echo echo ZyixCode#4386 >> zutils.bat
+echo echo ==================================== >> zutils.bat
+echo @echo on >> zutils.bat
+echo. ADDED: ZUITLS Command
+
+
+cls
+echo Successfully installed Z-UTILS!
+echo try to command "zutils" to verify!
+pause
+exit
+
+:cancel
+exit
